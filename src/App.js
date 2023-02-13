@@ -1,5 +1,6 @@
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import Employee from "./page/employee";
+import UserManagementPage from "./page/view/UserManagementPage.jsx";
 const { Header, Content, Footer } = Layout;
 const App = () => {
     const {
@@ -32,7 +33,7 @@ const App = () => {
                     padding: "0 50px",
                 }}
             >
-				<Employee/>
+				<UserManagementPage/>
             </Content>
         </Layout>
     );
