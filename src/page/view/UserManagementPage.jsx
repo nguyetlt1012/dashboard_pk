@@ -1,4 +1,4 @@
-import { Button, Divider, Radio, Space } from "antd";
+import { Button, Divider, Input, Radio, Space, Upload } from "antd";
 import { CloudDownloadOutlined, CloudUploadOutlined, PlusOutlined } from "@ant-design/icons";
 import "./UserManagementPage.css";
 import Board from "./board";
@@ -6,6 +6,7 @@ import { useState,useEffect } from "react";
 import FormCreate from "./formCreate";
 import SearchCpm from "./search";
 import axios from "axios";
+import FormUpload from "./formUpload";
 
 const UserManagementPage = () => {
 	const [open, setOpen] = useState(false);
@@ -13,6 +14,7 @@ const UserManagementPage = () => {
 	const [totalPages, setTotalPages] = useState(1);
 	const [loading, setLoading] = useState(false);
     const [textSearch, setTextSearch] = useState('');
+	const [openUpload, setOpenUpload] = useState(false);
 
 	const onCreate = (values) => {
 		console.log("Received values of form: ", values);
@@ -69,7 +71,10 @@ const UserManagementPage = () => {
 						size={"large"}
 						style={{ background: "#138496" }}
 						className={"btn-h-header"}
-					>
+						onClick={() => {
+							setOpenUpload(true);
+						}}
+						>
 						Tai len file mau
 					</Button>
 					<Button
@@ -89,6 +94,12 @@ const UserManagementPage = () => {
 						onCreate={onCreate}
 						onCancel={() => {
 							setOpen(false);
+						}}
+					/>
+					<FormUpload
+						open={openUpload}
+						onCancel={()=>{
+							setOpenUpload(false);
 						}}
 					/>
 				</div>
